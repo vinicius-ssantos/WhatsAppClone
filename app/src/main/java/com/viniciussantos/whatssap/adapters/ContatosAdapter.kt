@@ -27,7 +27,7 @@ class ContatosAdapter(
                 .into(binding.imageContatoFoto)
 
             // implemente o evento de clique
-            binding.root.setOnClickListener {
+            binding.clItemContato.setOnClickListener {
                 onClick(usuario)
             }
         }
