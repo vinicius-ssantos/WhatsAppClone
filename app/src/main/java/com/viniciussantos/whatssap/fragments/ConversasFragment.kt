@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.viniciussantos.whatssap.R
 import com.viniciussantos.whatssap.activities.MensagensActivity
 import com.viniciussantos.whatssap.adapters.ContatosAdapter
@@ -84,6 +85,7 @@ class ConversasFragment : Fragment() {
                 .collection(Constantes.CONVERSAS) // Acessa a coleção de conversas
                 .document(idUsuarioRemetente) // Busca o documento do usuário logado
                 .collection(Constantes.ULTIMAS_CONVERSAS) // Acessa a coleção de últimas conversas
+                .orderBy("data", Query.Direction.DESCENDING) // Ordena as conversas pela data de forma decrescente
                 .addSnapshotListener { querySnapshot, exception ->
 
                     if (exception != null) {
